@@ -1,0 +1,24 @@
+{
+  "name": "shauncart",
+  "version": "1.0.0",
+  "description": "One simple example of VueJs",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/shaunfox/shauncart.git"
+  },
+  "author": "Shaun",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/shaunfox/shauncart/issues"
+  },
+  "homepage": "https://github.com/shaunfox/shauncart#readme",
+  "dependencies": {
+    "axios": "^0.16.1",
+    "vue": "^2.2.6",
+    "vue-resource": "^1.3.1"
+  }
+}
