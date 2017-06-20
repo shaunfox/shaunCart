@@ -30,9 +30,9 @@ window.vm = new Vue({
     methods: {
         cartView: function() {
             var _this = this;
-            this.$http.get("data/cart.json").then(function(res) {
+            axios.get("data/cart.json").then(function(res) {
 
-                _this.productList = res.body.result.productList;
+                _this.productList = res.data.result.productList;
             })
         },
 
@@ -45,8 +45,7 @@ window.vm = new Vue({
                     item.productQuentity = 0;
                 }
             }
-            this.calcTotalPrice();
-            this.calcTotalWeight();
+            this.calcTotalPrice(); 
         },
 
         selectProduct: function(item) {
@@ -55,8 +54,7 @@ window.vm = new Vue({
             } else {
                 item.checked = !item.checked;
             }
-            this.calcTotalPrice();
-            this.calcTotalWeight();
+            this.calcTotalPrice(); 
         },
 
         checkAll: function(flag) {
@@ -69,8 +67,7 @@ window.vm = new Vue({
                     item.checked = _this.checkAllFlag;
                 }
             });
-            this.calcTotalPrice();
-            this.calcTotalWeight();
+            this.calcTotalPrice(); 
         },
 
         calcTotalPrice: function() {
@@ -81,6 +78,7 @@ window.vm = new Vue({
                     _this.totalMoney += item.productPrice * item.productQuentity;
                 }
             });
+            this.calcTotalWeight();
         },
 
         calcTotalWeight: function() {
@@ -90,7 +88,7 @@ window.vm = new Vue({
                 if (item.checked) {
                     _this.totalWeight += item.productWeight * item.productQuentity;
                 }
-            });
+            }); 
         },
 
         delConfirm:function(item){

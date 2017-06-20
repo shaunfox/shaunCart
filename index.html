@@ -70,7 +70,7 @@
                     </div>
                     <div class="cart-foot-l">
                         <div class="item-all-check">
-                            <a href="javascipt:;" v-on:click="checkAll(true)"><!-- 
+                            <a href="#" v-on:click.prevent="checkAll(true)" ><!-- 
                                 <span class="item-check-btn" v-bind:class="{'check':checkAllFlag}">
                                 <svg class="icon icon-ok icon-ok-all"><use xlink:href="#icon-ok"></use></svg>
                                 </span> -->
@@ -78,7 +78,7 @@
                             </a>
                         </div>
                         <div class="item-all-del">
-                            <a href="javascipt:;" class="item-del-btn" v-on:click="checkAll(false)">
+                            <a href="#" class="item-del-btn" v-on:click.prevent="checkAll(false)">
                                 <span>取消全选</span>
                             </a>
                         </div>
@@ -105,7 +105,7 @@
                                 <div class="cart-tab-1">
                                     <!-- 单选 -->
                                     <div class="cart-item-check">
-                                        <a href="javascipt:;" class="item-check-btn" v-bind:class="{'check':item.checked}" v-on:click="selectProduct(item)">
+                                        <a href="#" class="item-check-btn" v-bind:class="{'check':item.checked}" v-on:click.prevent="selectProduct(item)">
                                             <svg class="icon icon-ok">
                                                 <use xlink:href="#icon-ok"></use>
                                             </svg>
@@ -137,9 +137,11 @@
                                     <div class="item-quantity">
                                         <div class="select-self select-self-open">
                                             <div class="quentity">
-                                                <a href="javascript:;" v-on:click="changeMoney(item,0)">-</a>
-                                                <input type="text" value="0" v-model="item.productQuentity">
-                                                <a href="javascript:;" v-on:click="changeMoney(item,1)">+</a>
+                                                <a href="#" v-on:click.prevent="changeMoney(item,0)">-</a>
+
+                                                <input type="text" value="0" v-on:change="calcTotalPrice" v-model="item.productQuentity">
+
+                                                <a href="#" v-on:click.prevent="changeMoney(item,1)">+</a>
                                             </div>
                                         </div>
                                         <div class="item-stock">有货</div>
@@ -153,7 +155,7 @@
                                 <!-- 删除功能 -->
                                 <div class="cart-tab-5">
                                     <div class="cart-item-opration">
-                                        <a href="javascript:;" class="item-edit-btn" @click="delConfirm(item)">
+                                        <a href="#" class="item-edit-btn" @click.prevent="delConfirm(item)">
                                             <svg class="icon icon-del">
                                                 <use xlink:href="#icon-del"></use>
                                             </svg>
@@ -173,7 +175,7 @@
                 </div>
                 <div class="md-content">
                     <div class="confirm-tips">
-                        <p id="cusLanInfo">你确认删除此订单信息吗?</p>
+                        <p id="cusLanInfo">您确定不饮这包茶吗?</p>
                     </div>
                     <div class="btn-wrap col-2">
                         <button class="btn btn--m" id="btnModalConfirm" @click="delProduct()">Yes</button>
@@ -193,7 +195,8 @@
         </div>
     </div>
     <script src="js/lib/vue.js"></script>
-    <script src="js/lib/vue-resource.js"></script>
+    <!-- <script src="js/lib/vue-resource.js"></script> -->
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <script src="js/cart.js"></script>
     <script src="../lib/jquery.js"></script>
     <script src="../js/public-header.js"></script>
